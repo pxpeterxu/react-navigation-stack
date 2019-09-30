@@ -96,12 +96,14 @@ export default function ScenesReducer(
 
   const nextKeys = new Set();
   let nextRoutes = nextState.routes;
-  if (nextRoutes.length > nextState.index + 1) {
-    console.warn(
-      'StackRouter provided invalid state, index should always be the top route'
-    );
-    nextRoutes = nextState.routes.slice(0, nextState.index + 1);
-  }
+
+  // We allow unmounted routes
+  // if (nextRoutes.length > nextState.index + 1) {
+  //   console.warn(
+  //     'StackRouter provided invalid state, index should always be the top route'
+  //   );
+  //   nextRoutes = nextState.routes.slice(0, nextState.index + 1);
+  // }
 
   nextRoutes.forEach((route, index) => {
     const key = SCENE_KEY_PREFIX + route.key;
