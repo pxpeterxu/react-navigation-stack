@@ -138,12 +138,12 @@ export default function ScenesReducer(
 
   if (prevState) {
     let prevRoutes = prevState.routes;
-    if (prevRoutes.length > prevState.index + 1) {
-      console.warn(
-        'StackRouter provided invalid state, index should always be the top route'
-      );
-      prevRoutes = prevRoutes.slice(0, prevState.index + 1);
-    }
+    // if (prevRoutes.length > prevState.index + 1) {
+    //   console.warn(
+    //     'StackRouter provided invalid state, index should always be the top route'
+    //   );
+    //   prevRoutes = prevRoutes.slice(0, prevState.index + 1);
+    // }
     // Look at the previous routes and classify any removed scenes as `stale`.
     prevRoutes.forEach((route, index) => {
       const key = SCENE_KEY_PREFIX + route.key;
