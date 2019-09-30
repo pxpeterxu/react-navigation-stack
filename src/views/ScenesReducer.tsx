@@ -191,25 +191,30 @@ export default function ScenesReducer(
 
   nextScenes.sort(compareScenes);
 
-  let activeScenesCount = 0;
+  // let activeScenesCount = 0;
   nextScenes.forEach((scene, ii) => {
-    const isActive = !scene.isStale && scene.index === nextState.index;
+    // A scene is active either because it's the current, visible
+    // route or because it's meant to be preloaded
+    const isActive =
+      (!scene.isStale && scene.index === nextState.index) ||
+      (!!nextState.preloadIndexes &&
+        nextState.preloadIndexes.indexOf(scene.index) !== -1);
     if (isActive !== scene.isActive) {
       nextScenes[ii] = {
         ...scene,
         isActive,
       };
     }
-    if (isActive) {
-      activeScenesCount++;
-    }
+    // if (isActive) {
+    //   activeScenesCount++;
+    // }
   });
 
-  if (activeScenesCount !== 1) {
-    throw new Error(
-      `There should always be only one scene active, not ${activeScenesCount}.`
-    );
-  }
+  // if (activeScenesCount !== 1) {
+  //   throw new Error(
+  //     `There should always be only one scene active, not ${activeScenesCount}.`
+  //   );
+  // }
 
   if (nextScenes.length !== scenes.length) {
     return nextScenes;

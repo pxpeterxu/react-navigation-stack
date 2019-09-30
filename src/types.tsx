@@ -35,7 +35,10 @@ export type NavigationStackEventName =
   | 'willBlur'
   | 'didBlur';
 
-export type NavigationStackState = NavigationState;
+export interface NavigationStackState extends NavigationState {
+  /** Extra shim for preloading certain routes */
+  preloadIndexes?: number[];
+}
 
 export type NavigationStackProp<
   State = NavigationRoute,
