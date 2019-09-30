@@ -37,7 +37,7 @@ export type NavigationStackEventName =
 
 export interface NavigationStackState extends NavigationState {
   /** Extra shim for preloading certain routes */
-  preloadIndexes?: number[];
+  preloadRoutes?: NavigationRoute[];
 }
 
 export type NavigationStackProp<

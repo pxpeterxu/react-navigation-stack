@@ -95,7 +95,7 @@ export default function ScenesReducer(
   });
 
   const nextKeys = new Set();
-  let nextRoutes = nextState.routes;
+  let nextRoutes = nextState.routes.concat(nextState.preloadRoutes || []);
 
   // We allow unmounted routes
   // if (nextRoutes.length > nextState.index + 1) {
@@ -137,7 +137,7 @@ export default function ScenesReducer(
   });
 
   if (prevState) {
-    let prevRoutes = prevState.routes;
+    let prevRoutes = prevState.routes.concat(prevState.preloadRoutes || []);
     // if (prevRoutes.length > prevState.index + 1) {
     //   console.warn(
     //     'StackRouter provided invalid state, index should always be the top route'
@@ -197,10 +197,7 @@ export default function ScenesReducer(
   nextScenes.forEach((scene, ii) => {
     // A scene is active either because it's the current, visible
     // route or because it's meant to be preloaded
-    const isActive =
-      (!scene.isStale && scene.index === nextState.index) ||
-      (!!nextState.preloadIndexes &&
-        nextState.preloadIndexes.indexOf(scene.index) !== -1);
+    const isActive = !scene.isStale && scene.index === nextState.index;
     if (isActive !== scene.isActive) {
       nextScenes[ii] = {
         ...scene,

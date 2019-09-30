@@ -12,7 +12,7 @@ export declare type Scene = {
 export declare type NavigationStackEventName = 'willFocus' | 'didFocus' | 'willBlur' | 'didBlur';
 export interface NavigationStackState extends NavigationState {
     /** Extra shim for preloading certain routes */
-    preloadIndexes?: number[];
+    preloadRoutes?: NavigationRoute[];
 }
 export declare type NavigationStackProp<State = NavigationRoute, Params = NavigationParams> = NavigationScreenProp<State, Params> & {
     push: (routeName: string, params?: NavigationParams, action?: NavigationNavigateAction) => boolean;
