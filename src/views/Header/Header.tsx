@@ -622,9 +622,11 @@ class Header extends React.PureComponent<Props, State> {
 
     if (mode === 'float') {
       const scenesByIndex: { [key: string]: Scene } = {};
-      this.props.scenes.forEach(scene => {
-        scenesByIndex[scene.index] = scene;
-      });
+      this.props.scenes
+        .filter(scene => !scene.isPreload)
+        .forEach(scene => {
+          scenesByIndex[scene.index] = scene;
+        });
       const scenesProps = Object.values(scenesByIndex).map(scene => ({
         position: this.props.position,
         scene,

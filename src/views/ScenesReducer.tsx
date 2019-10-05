@@ -1,6 +1,6 @@
 import shallowEqual from '../utils/shallowEqual';
 import { Scene, NavigationStackState, SceneDescriptorMap } from '../types';
-import { NavigationRoute } from 'react-navigation';
+import { NavigationRoute, NavigationParams } from 'react-navigation';
 
 const SCENE_KEY_PREFIX = 'scene_';
 
@@ -95,7 +95,8 @@ export default function ScenesReducer(
   });
 
   const nextKeys = new Set();
-  let nextRoutes = nextState.routes.concat(nextState.preloadRoutes || []);
+  const nextRoutes = nextState.routes;
+  const nextPreloadRoutes = nextState.preloadRoutes || [];
 
   // We allow unmounted routes
   // if (nextRoutes.length > nextState.index + 1) {
@@ -105,7 +106,11 @@ export default function ScenesReducer(
   //   nextRoutes = nextState.routes.slice(0, nextState.index + 1);
   // }
 
-  nextRoutes.forEach((route, index) => {
+  function addSceneForRoute(
+    route: NavigationRoute<NavigationParams>,
+    index: number,
+    isPreload: boolean
+  ) {
     const key = SCENE_KEY_PREFIX + route.key;
 
     let descriptor = descriptors && descriptors[route.key];
@@ -114,6 +119,7 @@ export default function ScenesReducer(
       index,
       isActive: false,
       isStale: false,
+      isPreload,
       key,
       route,
       descriptor,
@@ -134,6 +140,13 @@ export default function ScenesReducer(
       staleScenes.delete(key);
     }
     freshScenes.set(key, scene);
+  }
+
+  nextRoutes.forEach((route, index) => {
+    addSceneForRoute(route, index, false);
+  });
+  nextPreloadRoutes.forEach((route, index) => {
+    addSceneForRoute(route, index, true);
   });
 
   if (prevState) {
@@ -166,6 +179,7 @@ export default function ScenesReducer(
           index,
           isActive: false,
           isStale: true,
+          isPreload: lastScene ? !!lastScene.isPreload : false,
           key,
           route,
           descriptor,

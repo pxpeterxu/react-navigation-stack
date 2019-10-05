@@ -57,6 +57,7 @@ describe('ScenesReducer', () => {
         index: 0,
         isActive: false,
         isStale: false,
+        isPreload: false,
         descriptor: MOCK_DESCRIPTOR,
         key: 'scene_1',
         route: {
@@ -68,6 +69,7 @@ describe('ScenesReducer', () => {
         index: 1,
         isActive: true,
         isStale: false,
+        isPreload: false,
         descriptor: MOCK_DESCRIPTOR,
         key: 'scene_2',
         route: {
@@ -87,6 +89,7 @@ describe('ScenesReducer', () => {
         index: 0,
         isActive: false,
         isStale: false,
+        isPreload: false,
         descriptor: MOCK_DESCRIPTOR,
         key: 'scene_1',
         route: {
@@ -98,6 +101,7 @@ describe('ScenesReducer', () => {
         index: 1,
         isActive: false,
         isStale: false,
+        isPreload: false,
         descriptor: MOCK_DESCRIPTOR,
         key: 'scene_2',
         route: {
@@ -109,6 +113,7 @@ describe('ScenesReducer', () => {
         index: 2,
         isActive: true,
         isStale: false,
+        isPreload: false,
         descriptor: MOCK_DESCRIPTOR,
         key: 'scene_3',
         route: {
@@ -254,6 +259,7 @@ describe('ScenesReducer', () => {
         index: 0,
         isActive: false,
         isStale: false,
+        isPreload: false,
         descriptor: MOCK_DESCRIPTOR,
         key: 'scene_1',
         route: {
@@ -265,6 +271,7 @@ describe('ScenesReducer', () => {
         index: 1,
         isActive: true,
         isStale: false,
+        isPreload: false,
         descriptor: MOCK_DESCRIPTOR,
         key: 'scene_2',
         route: {
@@ -276,6 +283,7 @@ describe('ScenesReducer', () => {
         index: 2,
         isActive: false,
         isStale: true,
+        isPreload: false,
         descriptor: MOCK_DESCRIPTOR,
         key: 'scene_3',
         route: {
@@ -294,6 +302,7 @@ describe('ScenesReducer', () => {
         index: 0,
         isActive: false,
         isStale: true,
+        isPreload: false,
         descriptor: MOCK_DESCRIPTOR,
         key: 'scene_1',
         route: {
@@ -305,6 +314,7 @@ describe('ScenesReducer', () => {
         index: 0,
         isActive: true,
         isStale: false,
+        isPreload: false,
         descriptor: MOCK_DESCRIPTOR,
         key: 'scene_3',
         route: {
@@ -316,6 +326,7 @@ describe('ScenesReducer', () => {
         index: 1,
         isActive: false,
         isStale: true,
+        isPreload: false,
         descriptor: MOCK_DESCRIPTOR,
         key: 'scene_2',
         route: {
@@ -334,6 +345,7 @@ describe('ScenesReducer', () => {
         index: 0,
         isActive: false,
         isStale: true,
+        isPreload: false,
         descriptor: MOCK_DESCRIPTOR,
         key: 'scene_1',
         route: {
@@ -345,6 +357,7 @@ describe('ScenesReducer', () => {
         index: 0,
         isActive: true,
         isStale: false,
+        isPreload: false,
         descriptor: MOCK_DESCRIPTOR,
         key: 'scene_2',
         route: {
@@ -356,6 +369,7 @@ describe('ScenesReducer', () => {
         index: 0,
         isActive: false,
         isStale: true,
+        isPreload: false,
         descriptor: MOCK_DESCRIPTOR,
         key: 'scene_3',
         route: {

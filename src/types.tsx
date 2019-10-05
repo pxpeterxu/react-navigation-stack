@@ -27,6 +27,8 @@ export type Scene = {
   isActive: boolean;
   route: NavigationRoute;
   descriptor: NavigationDescriptor<NavigationParams, NavigationStackOptions>;
+  /** Whether this scene was generated for preloading purposes */
+  isPreload?: boolean;
 };
 
 export type NavigationStackEventName =
