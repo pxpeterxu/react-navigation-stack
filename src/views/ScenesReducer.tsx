@@ -146,7 +146,7 @@ export default function ScenesReducer(
     addSceneForRoute(route, index, false);
   });
   nextPreloadRoutes.forEach((route, index) => {
-    addSceneForRoute(route, index, true);
+    addSceneForRoute(route, index + nextRoutes.length, true);
   });
 
   if (prevState) {
