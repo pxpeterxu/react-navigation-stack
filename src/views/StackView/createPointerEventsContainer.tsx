@@ -72,7 +72,9 @@ export default function createPointerEventsContainer<
 
       if (scene.isStale || navigation.state.index !== scene.index) {
         // The scene isn't focused.
-        return scene.index > navigation.state.index ? 'box-only' : 'none';
+        return scene.index > navigation.state.index && !scene.isPreload
+          ? 'box-only'
+          : 'none';
       }
 
       // @ts-ignore
